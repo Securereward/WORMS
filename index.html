@@ -85,6 +85,12 @@
             background: #00a6cc;
             color: #fff;
         }
+        #wallet-result {
+            margin-top: 15px;
+            color: #00ff00;
+            font-weight: bold;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -107,21 +113,21 @@
 
     <header>
         <h1>Welcome to $WORMS Token</h1>
-        <p>Unleashing the power of Web3 with our Solana-based token. Get ready to join a new wave of decentralization!</p>
+        <p>Unleashing the power of Web3 with our Solana-based token. $WORMS is here to revolutionize decentralized finance, empowering communities to thrive in a blockchain-driven world.</p>
         <a href="#about" class="btn btn-custom mt-4">Learn More</a>
     </header>
 
     <section id="about" class="text-center">
         <div class="container">
             <h2>About $WORMS</h2>
-            <p>$WORMS is a Solana-based cryptocurrency designed to empower the community. Holders will benefit from exclusive airdrops, governance rights, and much more. Together, we’re building the future of decentralized finance!</p>
+            <p>$WORMS is a groundbreaking token on the Solana blockchain, crafted to bring unique value to its holders. With lightning-fast transactions and low fees, $WORMS empowers users through decentralized finance, governance participation, and exclusive benefits. Whether you're an investor or a blockchain enthusiast, $WORMS welcomes you to a vibrant and growing community.</p>
         </div>
     </section>
 
     <section id="timer" class="text-center">
         <div class="container">
             <h2>Launch Timer</h2>
-            <p>The $WORMS token will officially launch on January 1, 2025. Stay tuned!</p>
+            <p>Mark your calendar! The $WORMS token officially launches on January 1, 2025. Don’t miss out on being a part of the revolution!</p>
             <div id="countdown">
                 <div class="timer-box"><span id="days">0</span>Days</div>
                 <div class="timer-box"><span id="hours">0</span>Hours</div>
@@ -134,14 +140,19 @@
     <section id="airdrop" class="text-center bg-dark">
         <div class="container">
             <h2>Airdrop Info</h2>
-            <p>Exciting rewards are coming your way! Be among the first to hold $WORMS tokens and qualify for our exclusive airdrops. Follow our socials to stay updated.</p>
+            <p>Be rewarded for joining the $WORMS community! Early adopters will qualify for exclusive token airdrops. Secure your position by entering your Solana wallet address below:</p>
+            <form onsubmit="simulateAirdrop(event)">
+                <input type="text" id="walletAddress" placeholder="Enter your wallet address" class="form-control mt-3" required>
+                <button type="submit" class="btn btn-custom mt-3">Submit</button>
+            </form>
+            <div id="wallet-result">Your wallet is eligible! The airdrop will be deposited soon!</div>
         </div>
     </section>
 
     <section id="socials" class="text-center">
         <div class="container">
             <h2>Follow Us</h2>
-            <p>Join the $WORMS community and stay updated on our latest developments!</p>
+            <p>Join the $WORMS community today and stay updated with our latest news, developments, and exclusive updates. Together, we’re building a new era of blockchain-driven collaboration.</p>
             <a href="https://twitter.com/YOUR_USERNAME" class="btn btn-custom" target="_blank">Follow on Twitter</a>
         </div>
     </section>
@@ -170,6 +181,14 @@
             document.getElementById("hours").innerText = hours;
             document.getElementById("minutes").innerText = minutes;
             document.getElementById("seconds").innerText = seconds;
+        };
+
+        const simulateAirdrop = (event) => {
+            event.preventDefault();
+            const walletInput = document.getElementById("walletAddress").value;
+            if (walletInput.trim()) {
+                document.getElementById("wallet-result").style.display = "block";
+            }
         };
 
         setInterval(countdown, 1000);
